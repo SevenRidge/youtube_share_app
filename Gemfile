@@ -36,6 +36,17 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# Bootstrap 2020.05.23追加
+gem 'bootstrap', '~> 4.1.1'
+gem 'jquery-rails'
+
+# エラーメッセージ日本語化 2020.05.23追加
+gem 'rails-i18n'
+
+# テンプレートエンジン
+gem 'slim-rails'
+gem 'html2slim'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

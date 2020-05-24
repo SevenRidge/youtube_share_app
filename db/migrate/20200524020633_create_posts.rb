@@ -1,8 +1,10 @@
 class CreatePosts < ActiveRecord::Migration[5.2]
   def change
     create_table :posts do |t|
-      t.string :content
-
+      t.text :content
+      t.text :youtube_url
+      t.string :genre
+      
       t.timestamps
     end
   end

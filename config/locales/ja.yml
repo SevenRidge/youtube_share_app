@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      post: 投稿
+    attributes:
+      user:
+        image: 画像
+        name: 名前
+        email: Eメール
+        password: パスワード
+        password_confirmation: パスワード確認
+      post:
+        id: ID
+        comment: ひとこと
+        youtube_url: YouTubeのURL
+        genre: ジャンル
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"

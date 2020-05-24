@@ -10,10 +10,10 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if @post.save!
-      redirect_to root_path, notice: "投稿できました"
+    if @post.save
+      redirect_to root_path, success: "投稿できました"
     else
-      render :new
+      render :new, danger: "投稿失敗しました"
     end
   end
 

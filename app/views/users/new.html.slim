@@ -1,0 +1,28 @@
+h1 ユーザー新規作成
+
+.row
+  .col-md-6
+    - if @user.errors.present?
+      .alert.alert-danger
+        div #{pluralize(@user.errors.count,"個のエラー")}があります。
+      ul#error_explanation
+      - @user.errors.full_messages.each do |message|
+        li = message
+
+    = form_with model: @user, local: true do |f|
+      .form-group
+        = f.label :image
+        = f.file_field :image, class: 'form-control', id: 'user_image'
+      .form-group
+        = f.label :name
+        = f.text_field :name, class: 'form-control', id: 'user_name'
+      .form-group
+        = f.label :email
+        = f.email_field :email, class: 'form-control', id: 'user_email'
+      .form-group
+        = f.label :password
+        = f.password_field :password, class: 'form-control', id: 'user_password'
+      .form-group
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, class: 'form-control', id: 'user_password_confirmation'
+      = f.submit nil, class: 'btn btn-primary'

@@ -4,7 +4,7 @@ h1 投稿の新規作成
   .col-md-6
     - if @post.errors.present?
       .alert.alert-danger
-        div #{pluralize(@post.errors.count,"ヶ所エラー")}があります。
+        div #{pluralize(@post.errors.count,"個のエラー")}があります
       ul#error_explanation
       - @post.errors.full_messages.each do |message|
         li = message

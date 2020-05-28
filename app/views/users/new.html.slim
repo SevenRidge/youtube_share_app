@@ -12,7 +12,7 @@ h1 ユーザー新規作成
     = form_with model: @user, local: true do |f|
       .form-group
         = f.label :image
-        = f.file_field :image, class: 'form-control', id: 'user_image'
+        = f.file_field :image, id: 'user_image'
       .form-group
         = f.label :name
         = f.text_field :name, class: 'form-control', id: 'user_name'

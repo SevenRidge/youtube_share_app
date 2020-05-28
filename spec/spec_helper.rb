@@ -14,8 +14,13 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-# Rspecでのcapybara利用設定 2020.05.24追加
+# Rspecでのcapybara利用設定 2020.05.28追加
 require 'capybara/rspec'
+
+# session用 2020.05.28追加
+def is_logged_in?
+  !session[:user_id].nil?
+end
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

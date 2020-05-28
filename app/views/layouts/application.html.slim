@@ -11,8 +11,15 @@ html
     .app-title.navbar.navbar-expand-md.navbar-dark.bg-dark
       .navbar-brand Tube
       = link_to 'ホーム', root_path, class: 'nav-link'
-      = link_to '新規投稿', new_post_path, class: 'nav-link'
-      = link_to 'ユーザ作成', new_user_path, class: 'nav-link'
+      - if current_user
+        = link_to '投稿', new_post_path, class: 'nav-link'
+        = image_tag current_user.image.thumb50.url, class: 'nav-link'
+        = link_to current_user.name, current_user, class: 'nav-link'
+        = link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
+      - else
+        = link_to '新規登録', new_user_path, class: 'nav-link'
+        = link_to 'ログイン', login_path, class: 'nav-link'
+
     .container
       - flash.each do |message_type, message|
         div class="alert alert-#{message_type}" = message

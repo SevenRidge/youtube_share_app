@@ -2,6 +2,8 @@ class User < ApplicationRecord
 
   # ユーザープロフィール画像用 2020.05.23追加
   mount_uploader :image, ImageUploader
+
+  has_many :posts, foreign_key: :user_id, dependent: :destroy
   
   before_save { self.email = email.downcase }
 

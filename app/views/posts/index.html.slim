@@ -4,8 +4,13 @@ h1 投稿一覧画面
   .row.row-eq-height
     - group.each do |post|
       .card
-        iframe src="https://www.youtube.com/embed/#{post.youtube_url.last(11)}"
-        p = post.comment
-        .list-group.list-group-flush
-          p = post.genre
-          p = post.created_at.to_s(:datetime_jp)
+        .card-header
+          = link_to post.user
+            = image_tag post.user.image.thumb50.url
+            = post.user.name
+        .card-body
+          iframe src="https://www.youtube.com/embed/#{post.youtube_url.last(11)}"
+          p = post.comment
+          .list-group.list-group-flush
+            = post.genre
+            = post.created_at.to_s(:datetime_jp)

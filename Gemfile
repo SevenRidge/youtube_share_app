@@ -54,8 +54,12 @@ gem 'mini_magick'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # rspecy用 2020.05.24
   gem 'rspec-rails', '~> 3.7'
   gem 'factory_bot_rails', '4.11'
+  # コンソール表示形式を表に変更 2020.05.29
+  gem 'hirb'
+  gem 'hirb-unicode'
 end
 
 group :development do

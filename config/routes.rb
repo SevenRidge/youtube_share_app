@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'likes/create'
+  get 'likes/destroy'
   root to: 'posts#index'
 
   get '/login', to: 'sessions#new'
@@ -7,5 +9,6 @@ Rails.application.routes.draw do
   
   resources :posts
   resources :users
+  resources :likes, only: [:create, :destroy]
 
 end

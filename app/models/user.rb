@@ -4,6 +4,7 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   has_many :posts, foreign_key: :user_id, dependent: :destroy
+  has_many :likes, dependent: :destroy
   
   before_save { self.email = email.downcase }
 

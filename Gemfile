@@ -51,6 +51,10 @@ gem 'html2slim'
 gem 'carrierwave'
 gem 'mini_magick'
 
+# いいねボタン 2020.05.30追加
+gem 'counter_culture', '~> 2.3'
+gem 'font-awesome-sass', '~> 5.8.1'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

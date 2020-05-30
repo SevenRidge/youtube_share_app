@@ -1,16 +1,5 @@
 h1  = @user.name
 
-- @posts.each_slice(3) do |group|
-  .row.row-eq-height
-    - group.each do |post|
-      .card
-        .card-header
-          = link_to post.user
-            = image_tag post.user.image.thumb50.url
-            = post.user.name
-        .card-body
-          iframe src="https://www.youtube.com/embed/#{post.youtube_url.last(11)}"
-          p = post.comment
-          .list-group.list-group-flush
-            = post.genre
-            = post.created_at.to_s(:datetime_jp)
+.row.row-eq-height
+  - @posts.each do |post|
+    = render "shared/post_form", post: post

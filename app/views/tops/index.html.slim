@@ -1,0 +1,9 @@
+.row.d-flex.align-items-center.justify-content-center
+  .topic
+    h1 あなたの好きなYouTubeに出会える
+
+.row.row-eq-height
+  - @genres_list.each do |one_genre|
+    .col-md-3
+      = link_to one_genre, posts_path(post_genre: one_genre), class: "btn btn-primary btn-lg btn-block top-buttons"
+

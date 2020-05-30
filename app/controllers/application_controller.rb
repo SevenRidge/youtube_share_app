@@ -13,4 +13,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_genrelist
+    @genres_list = ["音楽", "ゲーム", "おもしろ系", "キッズ", "いやし", "メイク", "料理", "勉強", "ライフハック", "すべて"]
+  end
+
+  def genre_check(genre)
+
+  end
+
 end

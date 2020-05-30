@@ -1,0 +1,18 @@
+
+.col-md-4
+  .card.text-black.border-primary.mb-3 style=("max-width: 20rem;") 
+    .card-header.bg-transparent.border-primary
+      = link_to post.user do
+        = image_tag post.user.image.thumb50.url
+        = post.user.name
+    iframe src="https://www.youtube.com/embed/#{post.youtube_url.last(11)}"
+    .card-body
+      h5.card-title= post.comment
+    ul.list-group.list-group-flush
+      li.list-group-item.border-primary
+        = link_to posts_path(post_genre: post.genre) do
+          = post.genre
+      li.list-group-item.border-primary
+        = l post.created_at
+    div data-post-id="#{post.id}" id="post-#{post.id}" 
+      = render "likes/like", post: post

@@ -1,22 +1,9 @@
-h1 投稿一覧画面
+h1
+ = params[:post_genre]
 
-- @posts.each_slice(3) do |group|
-  .row.row-eq-height
-      - group.each do |post|
-        .card
-          .card-header
-            = link_to post.user
-              = image_tag post.user.image.thumb50.url
-              = post.user.name
-          .card-body
-            iframe src="https://www.youtube.com/embed/#{post.youtube_url.last(11)}"
-            p = post.comment
-            .list-group.list-group-flush
-              | <div id="post-
-              = post.id
-              | " data-micropost-id="
-              = post.id
-              | ">
-              = post.genre
-              = post.created_at.to_s(:datetime_jp)
-              = render "likes/like", post: post
+.row.row-eq-height
+  - @posts.each do |post|
+    - if post.genre == params[:post_genre]
+      = render "shared/post_form", post: post
+    -else
+      = render "shared/post_form", post: post, post_genre: "すべて"

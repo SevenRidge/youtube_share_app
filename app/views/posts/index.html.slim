@@ -5,5 +5,5 @@ h1
   - @posts.each do |post|
     - if post.genre == params[:post_genre]
       = render "shared/post_form", post: post
-    -else
-      = render "shared/post_form", post: post, post_genre: "すべて"
+    - if params[:post_genre] == "すべて"
+      = render "shared/post_form", post: post

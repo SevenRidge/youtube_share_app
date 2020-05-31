@@ -22,9 +22,9 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to root_path, success: "投稿できました"
+      redirect_to @post.user, notice: "投稿できました"
     else
-      render :new, danger: "投稿失敗しました"
+      render :new
     end
   end
 

@@ -55,6 +55,10 @@ gem 'mini_magick'
 gem 'counter_culture', '~> 2.3'
 gem 'font-awesome-sass', '~> 5.8.1'
 
+# ページネーション
+gem 'will_paginate',           '3.1.7'
+gem 'bootstrap-will_paginate', '1.0.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -64,6 +68,8 @@ group :development, :test do
   # コンソール表示形式を表に変更 2020.05.29
   gem 'hirb'
   gem 'hirb-unicode'
+  # デバッグ用  2020.05.31
+  gem 'pry-rails'
 end
 
 group :development do

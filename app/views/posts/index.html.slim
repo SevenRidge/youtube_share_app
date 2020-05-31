@@ -4,6 +4,10 @@ h1
 .row.row-eq-height
   - @posts.each do |post|
     - if post.genre == params[:post_genre]
-      = render "shared/post_form", post: post
+      = render "shared/post_card", post: post
     - if params[:post_genre] == "すべて"
-      = render "shared/post_form", post: post
+      = render "shared/post_card", post: post
+
+.row
+  p= will_paginate :previous_label => ' &lt 前へ', :next_label => '次へ &gt'
+

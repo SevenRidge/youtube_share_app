@@ -28,3 +28,29 @@ img {
 .top-buttons {
   margin: 5px;
 }
+
+// ページネーション
+.pagination {
+  height: 100px;
+  margin: auto;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.pagination a {
+background-color: blue;
+text-decoration: none;
+}
+
+.pagination>.active>a {     
+background: #93c9ff;     /*背景の色を変える*/
+}
+
+.pagination * {
+color: white;
+margin: 0 7px;
+text-decoration: none;
+padding: 12.5px 18.5px;
+border-radius: 25px;
+font-family: 'Nunito', sans-serif;
+}

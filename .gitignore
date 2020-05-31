@@ -28,3 +28,9 @@
 
 # Ignore uploaded files in development 2020.05.27追加
 /public/uploads
+
+# Ignore uploaded files in development 2020.05.31追加
+.irbrc
+.irb_history
+
+

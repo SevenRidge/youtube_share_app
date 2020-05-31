@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   resources :posts
   resources :users
-  resources :likes, only: [:create, :destroy]
+  resources :likes, only: [:show, :create, :destroy]
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

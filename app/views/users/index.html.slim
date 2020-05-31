@@ -1,0 +1,7 @@
+h1 全ユーザー
+
+- @users.each do |user|
+  = link_to user do
+    = image_tag user.image.thumb50.url
+    p= user.name
+  

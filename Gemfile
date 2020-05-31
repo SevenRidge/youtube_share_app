@@ -56,8 +56,7 @@ gem 'counter_culture', '~> 2.3'
 gem 'font-awesome-sass', '~> 5.8.1'
 
 # ページネーション
-gem 'will_paginate',           '3.3.0'
-gem 'bootstrap-will_paginate', '1.0.0'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -9,5 +9,5 @@ h1
       = render "shared/post_card", post: post
 
 .row
-  p= will_paginate :previous_label => ' &lt 前へ', :next_label => '次へ &gt'
+  p= will_paginate @posts, :previous_label => ' &lt 前へ', :next_label => '次へ &gt'
 

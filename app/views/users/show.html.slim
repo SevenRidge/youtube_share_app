@@ -8,3 +8,5 @@ h1
 .row.row-eq-height
   - @posts.each do |post|
     = render "shared/post_card", post: post
+.row
+  p= will_paginate @posts, :previous_label => ' &lt 前へ', :next_label => '次へ &gt'

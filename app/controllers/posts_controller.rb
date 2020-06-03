@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :find_post, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.all.order(created_at: :desc).paginate(page: params[:page], per_page: 6)
@@ -9,12 +10,10 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def update
-    post = Post.find(params[:id])
-    post.update!(post_params)
+    @post.update!(post_params)
     redirect_to post.user, notice: "編集できました"
   end
 
@@ -25,6 +24,14 @@ class PostsController < ApplicationController
       redirect_to @post.user, notice: "投稿できました"
     else
       render :new
+    end
+  end
+
+  def destroy
+    if @post.destroy
+      redirect_to current_user, notice: "削除に成功しました"
+    else
+      redirect_to current_user, alert: "削除できませんでした"
     end
   end
 

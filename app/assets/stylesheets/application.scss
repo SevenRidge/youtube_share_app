@@ -2,6 +2,14 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+body{
+  background-color: #FFFFF0;
+}
+
+nav {
+  background-color: #FFFFF0;
+}
+
 // いいねボタン
 .like-btn {
   width: 15px;
@@ -17,11 +25,6 @@
   font-size: 15px;
   color: red;
   text-align: left;
-}
-
-// 画像サイズ
-img {
-  border-radius: 50%;
 }
 
 // トップ画ボタン
@@ -58,4 +61,29 @@ font-family: 'Nunito', sans-serif;
 .topic {
   text-align: center;
   margin: 100px;
+}
+
+.nav-link {
+  margin: 5px;
+}
+
+.nav-item {
+  margin: 5px;
+}
+
+.panel {
+  margin: 50px;
+}
+
+.panel-heading {
+  border: solid 1px #DDDDDD;
+  border-bottom: transparent;
+  background-color: whitesmoke;
+  padding: 10px;
+}
+
+.panel-body{
+  padding: 10px;
+  border: solid 1px #DDDDDD;
+  background-color: whitesmoke;
 }

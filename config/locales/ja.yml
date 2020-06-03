@@ -5,7 +5,7 @@ ja:
       post: 投稿
     attributes:
       user:
-        image: 画像
+        image: プロフィール画像
         name: 名前
         email: Eメール
         password: パスワード

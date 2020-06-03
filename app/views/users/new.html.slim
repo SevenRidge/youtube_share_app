@@ -1,7 +1,5 @@
-h1 ユーザー新規作成
-
-.row
-  .col-md-6
+.row.justify-content-center
+  .col-offset-3.col-md-6
     - if @user.errors.present?
       .alert.alert-danger
         div #{pluralize(@user.errors.count,"個のエラー")}があります。
@@ -9,20 +7,31 @@ h1 ユーザー新規作成
       - @user.errors.full_messages.each do |message|
         li = message
 
-    = form_with model: @user, local: true do |f|
-      .form-group
-        = f.label :image
-        = f.file_field :image, id: 'user_image'
-      .form-group
-        = f.label :name
-        = f.text_field :name, class: 'form-control', id: 'user_name'
-      .form-group
-        = f.label :email
-        = f.email_field :email, class: 'form-control', id: 'user_email'
-      .form-group
-        = f.label :password
-        = f.password_field :password, class: 'form-control', id: 'user_password'
-      .form-group
-        = f.label :password_confirmation
-        = f.password_field :password_confirmation, class: 'form-control', id: 'user_password_confirmation'
-      = f.submit nil, class: 'btn btn-primary'
+    .panel.panel-default
+      .panel-heading
+        | 会員情報
+      .panel-body
+        form
+        = form_with model: @user, local: true do |f|
+          .form-group
+            = f.label :image
+            = f.file_field :image, id: 'user_image'
+          .form-group
+            = f.text_field :name, class: 'form-control', id: 'user_name', placeholder: "名前"
+          .form-group
+            = f.email_field :email, class: 'form-control', id: 'user_email', placeholder: "Eメール"
+          .form-group
+            = f.password_field :password, class: 'form-control', id: 'user_password', placeholder: "パスワード"
+          .form-group
+            = f.password_field :password_confirmation, class: 'form-control', id: 'user_password_confirmation', placeholder: "パスワード確認"
+          = f.submit nil, class: 'btn btn-primary'
+
+
+          .form-group
+            label for="inputFile"  File input
+            .input-group
+              .custom-file
+                input#inputFile.custom-file-input type="file" /
+                label.custom-file-label data-browse="参照" for="inputFile"  ファイル選択(or ドロップ)
+              .input-group-append
+                button#inputFileReset.btn.btn-outline-secondary.input-group-text type="button"  取消

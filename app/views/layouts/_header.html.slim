@@ -1,0 +1,33 @@
+nav.navbar.navbar-expand-sm
+  = link_to root_path
+    .logo = image_tag "Logo-image.png", :size => "93x35"
+  button.navbar-toggler aria-controls="navbarNav" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarNav" data-toggle="collapse" type="button" 
+    span.navbar-toggler-icon
+  #navbarNav.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+
+    ul.navbar-nav
+      - if current_user
+        li.nav-item
+          a.nav-link href="/posts/new"  投稿
+        li.nav-item
+          = link_to "全ユーザー", users_path, class: 'nav-link'
+        li.dropdown
+          a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" 
+            span.gravatar
+              = image_tag current_user.image.thumb50.url, :size =>"50x50"
+            span.caret
+              = current_user.name
+          ul.dropdown-menu
+            li
+              = link_to "マイページ", current_user, class: 'nav-link'
+            li.divider role="separator"
+            li
+              = link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link', data: { confirm: 'ログアウトしますか？' }
+      - else
+        li.nav-item
+          a.nav-link href="/login"  ログイン
+        li.nav-item
+          a.nav-link href="/users/new"  会員登録
+
+

@@ -72,7 +72,7 @@ describe UsersController, type: :request do
       end
 
       it "リダイレクトされない" do
-        expect(response.body).to include "ユーザー新規作成"
+        expect(response.body).to include "会員登録"
       end
 
       it "メッセージが表示される" do

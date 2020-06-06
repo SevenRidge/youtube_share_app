@@ -1,9 +1,8 @@
 h1
   = image_tag @user.image.thumb50.url
-  | いいね一覧
+  | いいね
 
-= link_to "投稿一覧", user_path, class: "btn btn-primary"
-= link_to "いいね一覧", like_path, class: "btn btn-success"
+= render 'users/user_header'
 
 .row.row-eq-height
   - @likes.each do |like|

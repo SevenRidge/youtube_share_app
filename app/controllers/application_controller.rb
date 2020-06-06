@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :log_in
+  helper_method :log_in, :current_user
 
   # 渡されたユーザーでログインする
   def log_in(user)

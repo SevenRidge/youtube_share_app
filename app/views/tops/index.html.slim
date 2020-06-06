@@ -1,6 +1,7 @@
 .row.d-flex.align-items-center.justify-content-center
   .topic
     h1 好きなYouTubeに出会う
+    = link_to "ゲストログイン", tops_guest_sign_in_path, method: :post, class: "btn btn-success"
 
 .row.row-eq-height
   - @genres_list.each do |one_genre|

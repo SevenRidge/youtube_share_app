@@ -1,0 +1,12 @@
+h3
+  - if current_user && @user != current_user
+    span id="follow-button_#{ @user.id }"
+      = render 'users/follow-button', user: @user
+
+h3
+  = link_to "投稿：#{ @user.posts.count }", user_path, class: "btn btn-outline-primary"
+  = link_to "いいね：#{ @user.likes.count }", like_path, class: "btn btn-outline-primary"
+  div id="following-count_#{ @user.id }"
+    = link_to "フォロー：#{ @user.followings.count }", following_user_path(@user.id), class: "btn btn-outline-primary"  
+  div id="follower-count_#{ @user.id }"
+    = link_to "フォロワー：#{ @user.followers.count }", followers_user_path(@user.id), class: "btn btn-outline-primary"

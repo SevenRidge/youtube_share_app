@@ -10,7 +10,8 @@
             = f.text_field :email, class: 'form-control', id: 'session_email', placeholder: "Eメール"
           .form-group
             = f.password_field :password, class: 'form-control', id: 'session_password', placeholder: "パスワード"
-          .form-group.form-check.align-center
-            input#exampleCheck1.form-check-input type="checkbox" /
-            label.form-check-label for="exampleCheck1"  記憶する
+          .form-group
+            = f.label :remember_me, class: "checkbox inline" do
+             = f.check_box :remember_me
+             span ログイン状態を保持する
           = f.submit 'ログイン', class: 'btn btn-primary' 

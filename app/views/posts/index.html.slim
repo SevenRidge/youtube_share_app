@@ -7,4 +7,6 @@ h1
       = render "shared/post_card", post: post
     - if params[:post_genre] == "すべて"
       = render "shared/post_card", post: post
-  p= will_paginate @posts, :previous_label => ' &lt 前へ', :next_label => '次へ &gt'
+
+.row.row-eq-height
+  = will_paginate @posts, previous_label: '<', next_label: '>'

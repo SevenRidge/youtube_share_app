@@ -10,6 +10,10 @@ nav {
   background-color: #FFFFF0;
 }
 
+button {
+  padding: 0px;
+}
+
 // いいねボタン
 .like-btn {
   width: 15px;
@@ -86,4 +90,9 @@ font-family: 'Nunito', sans-serif;
   padding: 10px;
   border: solid 1px #DDDDDD;
   background-color: whitesmoke;
+}
+
+.card {
+  max-width: 100%;
+  flex-shrink:0;
 }

@@ -1,4 +1,4 @@
-h1 全ユーザー
+h3 全ユーザー
 
 table.table.table-hover
   thead
@@ -10,8 +10,9 @@ table.table.table-hover
       tbody
         tr
           td
-            = image_tag user.image.thumb50.url
-            = user.name
+            = link_to user do 
+              = image_tag user.image.thumb50.url
+              = user.name
           td
             = user.posts.count
           td

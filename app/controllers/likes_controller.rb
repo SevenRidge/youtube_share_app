@@ -1,9 +1,7 @@
 class LikesController < ApplicationController
 
   def show
-    # ユーザページのIDを持つユーザを@userに格納
     @user = User.find(params[:id])
-    # @userのIDを持ついいねをすべて取得
     @likes = @user.likes.all
   end
 

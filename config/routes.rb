@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'statistics/index'
   root to: 'tops#index'
   
   resources :posts
@@ -16,5 +17,5 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   post '/tops/guest_sign_in', to: 'sessions#new_guest'
-
+  get '/statistics', to: 'statistics#index'
 end

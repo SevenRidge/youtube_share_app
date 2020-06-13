@@ -3,7 +3,12 @@
     h3 好きなYouTubeに出会う
     = link_to "ゲストログイン", tops_guest_sign_in_path, method: :post, class: "btn btn-success"
 
+    - if current_user
+      div = link_to "投稿", new_post_path, class: "btn btn-primary"
+
 .row.row-eq-height
   - @genres_list.each do |one_genre|
     .col-6.col-lg-4.genre-buttons
-      = link_to one_genre, posts_path(post_genre: one_genre), class: "btn btn-primary btn-lg btn-block"
+      = link_to one_genre, posts_path(post_genre: one_genre), class: "btn btn-primary btn-lg btn-block" 
+
+      

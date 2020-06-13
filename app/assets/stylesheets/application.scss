@@ -97,12 +97,12 @@ ul.pagination {
 }
 
 .genre-buttons {
-   height:50px;
-   width:50px;
+   height: 100px;
+   width: 50px;
    border-radius:50%;
    line-height:50px;
    text-align:center;
-  }
+}
 
 .post-header-right, .post-good {
   float: right;
@@ -117,3 +117,7 @@ ul.pagination {
 }
 
 @media screen { #filename { display: none; } }
+
+.good-ranking {
+  text-align: center;
+}

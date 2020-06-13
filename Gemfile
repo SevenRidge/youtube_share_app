@@ -59,6 +59,9 @@ gem 'font-awesome-sass', '~> 5.8.1'
 gem 'will_paginate',           '3.3.0'
 gem 'bootstrap-will_paginate', '1.0.0'
 
+# チャート 2020.06.13
+gem "chartkick"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

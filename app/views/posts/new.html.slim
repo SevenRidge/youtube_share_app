@@ -1,5 +1,5 @@
 .row.justify-content-center
-  .col-offset-3.col-md-6
+  .col-offset-3.col-md-12
     - if @post.errors.present?
       .alert.alert-danger
         div #{pluralize(@post.errors.count,"個のエラー")}があります
@@ -15,7 +15,7 @@
         = form_with model: @post, local: true do |f|
           .form-group
             = f.label :genre
-            = f.select :genre,[["音楽"],["ゲーム"], ["おもしろ系"], ["キッズ"], ["いやし"],["メイク"],["料理"],["勉強"],["ライフハック"]], {include_blank: ""}, class: "form-control"
+            = f.select :genre,[["音楽"],["アニメ・ゲーム"], ["お笑い"], ["キッズ"], ["いやし"],["美容"],["料理"],["勉強"],["趣味"], ["ビジネス"], ["ニュース"]], {include_blank: ""}, class: "form-control"
           .form-group
             = f.label :youtube_url
             = f.text_field :youtube_url, class: 'form-control', id: 'post_youtube_url'

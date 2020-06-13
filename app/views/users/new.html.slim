@@ -23,6 +23,10 @@
           .form-group
             = f.email_field :email, class: 'form-control', id: 'user_email', placeholder: "Eメール"
           .form-group
+            = f.select :sex, [["男"], ["女"], ["フリー"]], {include_blank: ""}, class: "form-control"
+          .form-group
+            = f.select :age, [["10~15才"], ["16~20才"], ["21~25才"], ["26~30才"], ["31~35才"], ["36~40才"], ["41~45才"], ["46~50才"], ["51~55才"], ["56~60才"], ["61才以上"]], {include_blank: ""}, class: "form-control"
+          .form-group
             = f.password_field :password, class: 'form-control', id: 'user_password', placeholder: "パスワード"
           .form-group
             = f.password_field :password_confirmation, class: 'form-control', id: 'user_password_confirmation', placeholder: "パスワード確認"

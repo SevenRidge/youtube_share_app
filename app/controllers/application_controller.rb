@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_genrelist
-    @genres_list = ["音楽", "ゲーム", "おもしろ系", "キッズ", "いやし", "メイク", "料理", "勉強", "ライフハック", "すべて"]
+    @genres_list = ["音楽", "アニメ・ゲーム", "お笑い", "キッズ", "いやし", "美容", "料理", "勉強", "趣味", "ビジネス", "ニュース", "すべて"]
   end
 
   def remember(user)

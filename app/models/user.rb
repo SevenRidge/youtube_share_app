@@ -24,6 +24,9 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user, dependent: :destroy
 
+  validates :sex, presence: :true
+  validates :age, presence: :true
+
   class << self
     def digest(string)
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -62,7 +65,7 @@ class User < ApplicationRecord
   end
 
   def self.guest
-    find_or_create_by!(name: "guest(閲覧用ユーザー)", email: "guest@example.com") do |user|
+    find_or_create_by!(name: "閲覧用ユーザー", sex: "フリー", age:"26~30才", email: "guest@example.com") do |user|
       user.password = SecureRandom.urlsafe_base64
     end
   end

@@ -1,4 +1,4 @@
-h1
+h3
   = image_tag @user.image.thumb50.url
   | 投稿
 
@@ -9,15 +9,8 @@ h1
     - else
       = render "users/follow"
 
-h3
-  = link_to "投稿：#{@user.posts.count}", user_path, class: "btn btn-outline-primary"
-  = link_to "いいね：#{@user.likes.count}", like_path, class: "btn btn-outline-primary"
-  = link_to "フォロー：#{@user.followings.count}", following_user_path(@user.id), class: "btn btn-outline-primary"
-  = link_to "フォロワー：#{@user.followers.count}", followers_user_path(@user.id), class: "btn btn-outline-primary"
-
+= render 'shared/user_header'
 
 .row.row-eq-height
   - @posts.each do |post|
     = render "shared/post_card", post: post
-  .col-md-4.col-sm-12
-    p= will_paginate @posts, :previous_label => ' &lt 前へ', :next_label => '次へ &gt'

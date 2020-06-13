@@ -1,11 +1,9 @@
 .row.d-flex.align-items-center.justify-content-center
   .topic
-    h1 好きなYouTubeに出会う
+    h3 好きなYouTubeに出会う
     = link_to "ゲストログイン", tops_guest_sign_in_path, method: :post, class: "btn btn-success"
 
 .row.row-eq-height
   - @genres_list.each do |one_genre|
-    .col-md-2.com-4.col-md-6
-      = link_to one_genre, posts_path(post_genre: one_genre), class: "btn btn-primary btn-lg btn-block top-buttons"
-
-    button.btn.btn-lg.btn-pink600_ftg style=("width: 200px; height: 200px;")  btn-pink600_ftg
+    .col-6.col-lg-4.genre-buttons
+      = link_to one_genre, posts_path(post_genre: one_genre), class: "btn btn-primary btn-lg btn-block"

@@ -15,6 +15,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to Tube!"
       redirect_to @user
     else
+
       render :new
     end
   end

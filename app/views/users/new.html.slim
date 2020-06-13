@@ -1,5 +1,4 @@
 .row.justify-content-center
-  .col-offset-3.col-md-6
     - if @user.errors.present?
       .alert.alert-danger
         div #{pluralize(@user.errors.count,"個のエラー")}があります。
@@ -14,8 +13,11 @@
         form
         = form_with model: @user, local: true do |f|
           .form-group
-            = f.label :image
-            = f.file_field :image, id: 'user_image'
+            .imagePreview
+            .input-group
+              label.input-group-btn
+                #user_image
+                  = f.file_field :image, id: 'user_image'
           .form-group
             = f.text_field :name, class: 'form-control', id: 'user_name', placeholder: "名前"
           .form-group
@@ -26,11 +28,20 @@
             = f.password_field :password_confirmation, class: 'form-control', id: 'user_password_confirmation', placeholder: "パスワード確認"
           = f.submit nil, class: 'btn btn-primary'
 
+javascript:
+  $(document).on('change', ':file', function() {
+      var input = $(this),
+      numFiles = input.get(0).files ? input.get(0).files.length : 1,
+      label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+      input.parent().parent().next(':text').val(label);
 
-          .form-group
-            .input-group
-              .custom-file
-                input#inputFile.custom-file-input type="file" /
-                label.custom-file-label data-browse="参照" for="inputFile"  ファイル選択(or ドロップ)
-              .input-group-append
-                button#inputFileReset.btn.btn-outline-secondary.input-group-text type="button"  取消
+      var files = !!this.files ? this.files : [];
+      if (!files.length || !window.FileReader) return;
+      if (/^image/.test( files[0].type)){
+          var reader = new FileReader();
+          reader.readAsDataURL(files[0]);
+          reader.onloadend = function(){
+              input.parent().parent().parent().prev('.imagePreview').css("background-image", "url("+this.result+")");
+          }
+      }
+  });

@@ -1,20 +1,25 @@
-.col-md-12.col-lg-4
-  .card.text-black.border-primary.mb-3
-    ul.card-header.bg-transparent.border-primary
-      = link_to post.user do
-        = image_tag post.user.image.thumb50.url
-        = post.user.name
-      ul.float-right
-        li.= l post.created_at
-        li.= link_to posts_path(post_genre: post.genre) do
-          = post.genre
-        div data-post-id="#{post.id}" id="post-#{post.id}" 
-          = render "likes/like", post: post
-    .embed-responsive.embed-responsive-16by9
-      iframe src="https://www.youtube.com/embed/#{post.youtube_url.last(11)}"
+.col-12.col-sm-12.col-md-6.col-lg-4
+  .card.border-primary.mb-3
+    .card-header.bg-transparent
+      div#post-header-profile
+      .post-header-top
+        .post-header-left
+        = link_to post.user do
+          = image_tag post.user.image.thumb50.url
+          = post.user.name
+        .post-header-right
+          div.post-time = time_ago_in_words(post.created_at)
+          div.post-genre = link_to posts_path(post_genre: post.genre) do   
+            = post.genre
+          div.post-good
+            div data-post-id="#{post.id}" id="post-#{post.id}" 
+              = render "likes/like", post: post
+      .post-header-bottom
+        .post-comment
+          = post.comment
     
-    .card-body
-      h5.card-title= post.comment
+    .post-movies.embed-responsive.embed-responsive-16by9
+      iframe src="https://www.youtube.com/embed/#{post.youtube_url.last(11)}"
     ul.list-group
       - if post.user == current_user && params[:id]
         = link_to "編集", edit_post_path(post.id), class: "btn btn-success"

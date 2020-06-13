@@ -1,8 +1,8 @@
-h1
+h3
   = image_tag @user.image.thumb50.url
   | いいね
 
-= render 'users/user_header'
+= render 'shared/user_header'
 
 .row.row-eq-height
   - @likes.each do |like|

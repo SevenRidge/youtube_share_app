@@ -11,7 +11,7 @@ class User < ApplicationRecord
   
   before_save { self.email = email.downcase }
 
-  validates :name, presence: true, length: { maximum: 15 }
+  validates :name, presence: true, length: { maximum: 10 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 64 },
                     format: { with: VALID_EMAIL_REGEX },
@@ -62,7 +62,7 @@ class User < ApplicationRecord
   end
 
   def self.guest
-    find_or_create_by!(name: "guest", email: "guest@example.com") do |user|
+    find_or_create_by!(name: "guest(閲覧用ユーザー)", email: "guest@example.com") do |user|
       user.password = SecureRandom.urlsafe_base64
     end
   end

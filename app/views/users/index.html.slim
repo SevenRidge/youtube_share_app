@@ -1,7 +1,19 @@
 h1 全ユーザー
 
-- @users.each do |user|
-  = link_to user do
-    = image_tag user.image.thumb50.url
-    p= user.name
+table.table.table-hover
+  thead
+    tr
+      th ユーザ情報
+      th 投稿数
+      th いいね獲得数
+    - @users.each do |user|
+      tbody
+        tr
+          td
+            = image_tag user.image.thumb50.url
+            = user.name
+          td
+            = user.posts.count
+          td
+            = user.likes.count
   

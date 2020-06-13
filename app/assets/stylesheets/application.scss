@@ -10,24 +10,24 @@ nav {
   background-color: #FFFFF0;
 }
 
-button {
-  padding: 0px;
-}
-
 // いいねボタン
 .like-btn {
   width: 15px;
   height: 15px;
   font-size: 15px;
-  color: grey;
-  text-align: left;
+  color: #808080;
+
 }
 
 .unlike-btn {
   width: 15px;
   height: 15px;
   font-size: 15px;
-  color: red;
+  color: #e54747;
+
+}
+
+.good-button {
   text-align: left;
 }
 
@@ -41,7 +41,6 @@ button {
   height: 100px;
   margin: auto;
   margin-top: 50px;
-  text-align: center;
 }
 
 .pagination a {
@@ -55,24 +54,20 @@ text-decoration: none;
 
 .pagination * {
 color: white;
-margin: 0 7px;
+margin: 7px;
 text-decoration: none;
-padding: 12.5px 18.5px;
+padding: 8px 15px;
 border-radius: 25px;
 font-family: 'Nunito', sans-serif;
+}
+
+ul.pagination {
+  text-align: center;
 }
 
 .topic {
   text-align: center;
   margin: 100px;
-}
-
-.nav-link {
-  margin: 5px;
-}
-
-.nav-item {
-  margin: 5px;
 }
 
 .panel {
@@ -92,7 +87,33 @@ font-family: 'Nunito', sans-serif;
   background-color: whitesmoke;
 }
 
-.card {
-  max-width: 100%;
-  flex-shrink:0;
+.imagePreview {
+  width: 50px;
+  height: 50px;
+  background-position: center;
+  background-size: cover;
+  -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
+  display: inline-block;
 }
+
+.genre-buttons {
+   height:50px;
+   width:50px;
+   border-radius:50%;
+   line-height:50px;
+   text-align:center;
+  }
+
+.post-header-right, .post-good {
+  float: right;
+}
+
+.post-time, .post-genre, .post-good {
+  text-align: right;
+}
+
+.post-comment {
+  margin-top: 10px;
+}
+
+@media screen { #filename { display: none; } }

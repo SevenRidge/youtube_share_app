@@ -1,4 +1,4 @@
-h1
+h3
  = params[:post_genre]
 h5
   | 投稿数：#{@posts_num}件
@@ -9,6 +9,3 @@ h5
       = render "shared/post_card", post: post
     - if params[:post_genre] == "すべて"
       = render "shared/post_card", post: post
-
-.row.row-eq-height
-  = will_paginate @posts, previous_label: '<', next_label: '>'

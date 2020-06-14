@@ -1,51 +1,42 @@
+- if @user.errors.present?
+  .alert.alert-danger
+    div #{pluralize(@user.errors.count,"個のエラー")}があります
+  ul#error_explanation
+  - @user.errors.full_messages.each do |message|
+    li = message
+
 .row.justify-content-center
-    - if @user.errors.present?
-      .alert.alert-danger
-        div #{pluralize(@user.errors.count,"個のエラー")}があります。
-      ul#error_explanation
-      - @user.errors.full_messages.each do |message|
-        li = message
+  .panel.panel-default
+    .panel-heading
+      | 会員情報
+    .panel-body
+      form
+      = form_with model: @user, local: true do |f|
+        = f.label :image
+        .form-group
+          .imagePreview
+          .input-group
+            label.input-group-btn
+              #user_image
+                = f.file_field :image
+        .form-group
+          = f.label :name
+          = f.text_field :name, class: 'form-control', id: 'user_name'
+        .form-group
+          = f.label :sex
+          = f.select :sex, [["男性"], ["女性"], ["フリー"]], {include_blank: ""}, class: "form-control"
+        .form-group
+          = f.label :age
+          = f.select :age, [["10~19才"], ["20~29才"], ["30~39才"], ["40~49才"], ["50~59才"], ["60才以上"]], {include_blank: ""}, class: "form-control"
+        .form-group
+          = f.label :email
+          = f.email_field :email, class: 'form-control', id: 'user_email'
+        .form-group
+          = f.label :password
+          = f.password_field :password, class: 'form-control', id: 'user_password'
+        .form-group
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation, class: 'form-control', id: 'user_password_confirmation'
+        = f.submit nil, class: 'btn btn-primary'
 
-    .panel.panel-default
-      .panel-heading
-        | 会員情報
-      .panel-body
-        form
-        = form_with model: @user, local: true do |f|
-          .form-group
-            .imagePreview
-            .input-group
-              label.input-group-btn
-                #user_image
-                  = f.file_field :image, id: 'user_image'
-          .form-group
-            = f.text_field :name, class: 'form-control', id: 'user_name', placeholder: "名前"
-          .form-group
-            = f.email_field :email, class: 'form-control', id: 'user_email', placeholder: "Eメール"
-          .form-group
-            = f.select :sex, [["男"], ["女"], ["フリー"]], {include_blank: ""}, class: "form-control"
-          .form-group
-            = f.select :age, [["10~15才"], ["16~20才"], ["21~25才"], ["26~30才"], ["31~35才"], ["36~40才"], ["41~45才"], ["46~50才"], ["51~55才"], ["56~60才"], ["61才以上"]], {include_blank: ""}, class: "form-control"
-          .form-group
-            = f.password_field :password, class: 'form-control', id: 'user_password', placeholder: "パスワード"
-          .form-group
-            = f.password_field :password_confirmation, class: 'form-control', id: 'user_password_confirmation', placeholder: "パスワード確認"
-          = f.submit nil, class: 'btn btn-primary'
-
-javascript:
-  $(document).on('change', ':file', function() {
-      var input = $(this),
-      numFiles = input.get(0).files ? input.get(0).files.length : 1,
-      label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-      input.parent().parent().next(':text').val(label);
-
-      var files = !!this.files ? this.files : [];
-      if (!files.length || !window.FileReader) return;
-      if (/^image/.test( files[0].type)){
-          var reader = new FileReader();
-          reader.readAsDataURL(files[0]);
-          reader.onloadend = function(){
-              input.parent().parent().parent().prev('.imagePreview').css("background-image", "url("+this.result+")");
-          }
-      }
-  });
+= render 'users/user_upload_image'

@@ -2,18 +2,26 @@ class PostsController < ApplicationController
   before_action :find_post, only: [:edit, :update, :destroy]
 
   def index
-    if params[:post_genre]
-      @posts = Post.where(genre: params[:post_genre]).order(created_at: :desc).paginate(page: params[:page], per_page: 9)
-      @posts_num = @posts.count
-    end
     if params[:post_genre]  == "すべて"
-      @posts = Post.all.order(created_at: :desc).paginate(page: params[:page], per_page: 15)
-      @posts_num = @posts.count
+      @posts = Post.all.order(created_at: :desc)
+    else
+      @posts = Post.where(genre: params[:post_genre]).order(created_at: :desc)
     end
   end
 
   def new
     @post = Post.new
+  end
+
+  def create
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
+    check_youtubeurl @post.youtube_url
+    if @post.save
+      redirect_to @post.user, notice: "投稿できました"
+    else
+      render :new
+    end
   end
 
   def edit
@@ -24,16 +32,6 @@ class PostsController < ApplicationController
     redirect_to post.user, notice: "編集できました"
   end
 
-  def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
-    if @post.save
-      redirect_to @post.user, notice: "投稿できました"
-    else
-      render :new
-    end
-  end
-
   def destroy
     if @post.destroy
       redirect_to current_user, notice: "削除に成功しました"
@@ -42,13 +40,12 @@ class PostsController < ApplicationController
     end
   end
 
-  private
-    def find_post
-      @post = Post.find(params[:id])
-    end
+  def find_post
+    @post = Post.find(params[:id])
+  end
 
+  private
     def post_params
       params.require(:post).permit(:comment, :youtube_url, :genre)
     end
-
 end

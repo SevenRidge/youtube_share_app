@@ -18,7 +18,7 @@
         .post-comment
           = post.comment
     
-    .post-movies.embed-responsive.embed-responsive-16by9
+    .post-body.embed-responsive.embed-responsive-16by9
       iframe src="https://www.youtube.com/embed/#{post.youtube_url.last(11)}"
     ul.list-group
       - if post.user == current_user && params[:id]

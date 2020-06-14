@@ -2,78 +2,70 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-body{
+/*
+共通部分
+*/
+
+// ページ全体の色
+body {
   background-color: #FFFFF0;
 }
 
-nav {
-  background-color: #FFFFF0;
+/*
+トップページ
+*/
+
+.toppage-eyecatch {
+  text-align: center;
+  margin: 70px;
 }
 
-// いいねボタン
-.like-btn {
-  width: 15px;
-  height: 15px;
-  font-size: 15px;
-  color: #808080;
-
+.eyecatch-postbutton {
+  margin: 5px;
 }
 
+.toppage-genrebuttons {
+  height: 120px;
+  width: 120px;
+  margin: 20px;
+}
+
+/*
+投稿一覧
+*/
+
+// いいね付与時
 .unlike-btn {
   width: 15px;
   height: 15px;
   font-size: 15px;
   color: #e54747;
-
 }
 
-.good-button {
-  text-align: left;
+// いいね解除時
+.like-btn {
+  width: 15px;
+  height: 15px;
+  font-size: 15px;
+  color: #808080;
 }
 
-// トップ画ボタン
-.top-buttons {
-  margin: 5px;
+// 投稿カードのヘッダ情報(投稿時間・ジャンル・いいねボタン)
+.post-header-right {
+  float: right;
+  text-align: right;
 }
 
-// ページネーション
-.pagination {
-  height: 100px;
-  margin: auto;
-  margin-top: 50px;
-}
+/*
+投稿・会員登録フォーム
+*/
 
-.pagination a {
-background-color: blue;
-text-decoration: none;
-}
-
-.pagination>.active>a {     
-  background: #93c9ff;     /*背景の色を変える*/
-}
-
-.pagination * {
-color: white;
-margin: 7px;
-text-decoration: none;
-padding: 8px 15px;
-border-radius: 25px;
-font-family: 'Nunito', sans-serif;
-}
-
-ul.pagination {
-  text-align: center;
-}
-
-.topic {
-  text-align: center;
-  margin: 100px;
-}
-
+// ヘッダとの距離(タイトルないため)
 .panel {
   margin: 50px;
 }
 
+// ヘッダー
 .panel-heading {
   border: solid 1px #DDDDDD;
   border-bottom: transparent;
@@ -81,43 +73,24 @@ ul.pagination {
   padding: 10px;
 }
 
+// ボディ
 .panel-body{
   padding: 10px;
   border: solid 1px #DDDDDD;
   background-color: whitesmoke;
 }
 
+// アップロード画像表示
 .imagePreview {
   width: 50px;
   height: 50px;
   background-position: center;
   background-size: cover;
-  -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
   display: inline-block;
 }
 
-.genre-buttons {
-   height: 100px;
-   width: 50px;
-   border-radius:50%;
-   line-height:50px;
-   text-align:center;
-}
-
-.post-header-right, .post-good {
-  float: right;
-}
-
-.post-time, .post-genre, .post-good {
-  text-align: right;
-}
-
-.post-comment {
-  margin-top: 10px;
-}
-
-@media screen { #filename { display: none; } }
-
+// 統計情報
 .good-ranking {
   text-align: center;
 }

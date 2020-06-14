@@ -18,7 +18,7 @@
 require 'capybara/rspec'
 
 # session用 2020.05.28追加
-def is_logged_in?
+def logged_in?
   !session[:user_id].nil?
 end
 

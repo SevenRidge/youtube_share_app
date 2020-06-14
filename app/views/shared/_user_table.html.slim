@@ -1,0 +1,17 @@
+table.table.table-hover
+  thead
+    tr
+      th #{title}
+      th 投稿数
+      th いいね獲得数
+    - @users.each do |user|
+      tbody
+        tr
+          td
+            = link_to user do 
+              = image_tag user.image.thumb50.url
+              = user.name
+          td
+            = user.posts.count
+          td
+            = user.likes.count

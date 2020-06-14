@@ -22,10 +22,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_genrelist
-    @genres_list = ["音楽", "アニメ・ゲーム", "お笑い", "キッズ", "いやし", "美容", "料理", "勉強", "趣味", "ビジネス", "ニュース", "すべて"]
-  end
-
   def remember(user)
     user.remember
     cookies.permanent.signed[:user_id] = user.id
@@ -44,4 +40,9 @@ class ApplicationController < ActionController::Base
     @current_user = nil
   end
 
+  def check_youtubeurl(youtubeurl)
+    if youtubeurl.include?("https://www.youtube.com/watch?v=") && youtubeurl.length > 43
+      @post.youtube_url = youtubeurl = youtubeurl.slice(0,43)
+    end
+  end
 end

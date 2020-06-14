@@ -1,5 +1,5 @@
 .row.justify-content-center
-  .col-lg-6
+  .col-12.col-sm-12.col-md-6.col-lg-6
     .panel.panel-default
       .panel-heading
         | ログイン
@@ -7,11 +7,13 @@
         form
         = form_with scope: :session, local: true do |f|
           .form-group
-            = f.text_field :email, class: 'form-control', id: 'session_email', placeholder: "Eメール"
+            = f.label :email
+            = f.email_field :email, class: 'form-control', id: 'user_email'
           .form-group
-            = f.password_field :password, class: 'form-control', id: 'session_password', placeholder: "パスワード"
+            = f.label :password
+            = f.password_field :password, class: 'form-control', id: 'user_password'
           .form-group
             = f.label :remember_me, class: "checkbox inline" do
              = f.check_box :remember_me
-             span ログイン状態を保持する
+             span 記憶する
           = f.submit 'ログイン', class: 'btn btn-primary'

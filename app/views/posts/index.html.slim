@@ -1,7 +1,7 @@
 h3
  = params[:post_genre]
 h5
-  | 投稿数：#{@posts_num}件
+  | 投稿数：#{@posts.count}件
 
 .row.row-eq-height
   - @posts.each do |post|

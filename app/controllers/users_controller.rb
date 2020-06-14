@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :find_user, only: [:show, :followings, :followers]
 
   def index
     @users = User.all
@@ -12,44 +13,31 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "Welcome to Tube!"
+      flash[:success] = "会員登録が完了しました¥n投稿ができるようになります"
       redirect_to @user
     else
-
       render :new
     end
   end
 
   def show
-    @user = User.find(params[:id])
-    @posts = @user.posts.order(created_at: :desc).paginate(page: params[:page], per_page: 6)
+    @posts = @user.posts.order(created_at: :desc)
   end
 
   def followings
-    @user =User.find(params[:id])
-    @users =@user.followings.page(params[:page]).per(5)
+    @users = @user.followings
     render 'show_followings'
   end
 
   def followers
-    @user =User.find(params[:id])
-    @users =@user.followers.page(params[:page]).per(5)
-    render 'show_followers'
-  end
-
-  def following
-    @user =User.find(params[:id])
-    @users =@user.followings
-    render 'show_followings'
-  end
-
-  def followers
-    @user =User.find(params[:id])
-    @users =@user.followers
+    @users = @user.followers
     render 'show_followers'
   end
 
   private
+    def find_user
+      @user = User.find(params[:id])
+    end
 
     def user_params
       params.require(:user).permit(:image, :name, :sex, :age, :email, :password, :password_confirmation)

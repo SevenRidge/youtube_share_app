@@ -1,14 +1,14 @@
-.row.d-flex.align-items-center.justify-content-center
-  .topic
-    h3 好きなYouTubeに出会う
-    = link_to "ゲストログイン", tops_guest_sign_in_path, method: :post, class: "btn btn-success"
+.row.align-items-center.justify-content-center
+  .toppage-eyecatch
+    .eyecatch-phrase
+      h3 好きなYouTubeに出会う場所
+    .eyecatch-guestloginbutton
+      div = link_to "ゲストログイン", tops_guest_sign_in_path, method: :post, class: "btn btn-success"
+    .eyecatch-postbutton
+      - if current_user
+        div = link_to "投稿", new_post_path, class: "btn btn-primary"
 
-    - if current_user
-      div = link_to "投稿", new_post_path, class: "btn btn-primary"
-
-.row.row-eq-height
+.row
   - @genres_list.each do |one_genre|
-    .col-6.col-lg-4.genre-buttons
-      = link_to one_genre, posts_path(post_genre: one_genre), class: "btn btn-primary btn-lg btn-block" 
-
-      
+    .col-6.col-sm-6.col-md-6.col-lg-4.text-center
+      = link_to one_genre, posts_path(post_genre: one_genre), class: "btn btn-primary btn-lg toppage-genrebuttons"

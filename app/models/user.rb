@@ -1,29 +1,28 @@
 class User < ApplicationRecord
 
-  # ユーザープロフィール画像用 2020.05.23追加
   mount_uploader :image, ImageUploader
 
-  # Remember me機能
   attr_accessor :remember_token
 
   has_many :posts, foreign_key: :user_id, dependent: :destroy
   has_many :likes, dependent: :destroy
-  
-  before_save { self.email = email.downcase }
-
-  validates :name, presence: true, length: { maximum: 10 }
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 64 },
-                    format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: { case_sensitive: false }
-  has_secure_password
-  validates :password, presence: true, length: { in: 6..22 }
-
   has_many :relationships
   has_many :followings, through: :relationships, source: :follow, dependent: :destroy
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user, dependent: :destroy
 
+  before_save { self.email = email.downcase }
+
+  validates :name, presence: true
+  validates :name, length: { maximum: 10 }
+    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true
+  validates :email, length: { maximum: 64 }
+  validates :email, format: { with: VALID_EMAIL_REGEX }
+  validates :email, uniqueness: { case_sensitive: false }
+    has_secure_password
+  # validates :password, presence: true
+  # validates :password, length: { in: 6..10 }
   validates :sex, presence: :true
   validates :age, presence: :true
 

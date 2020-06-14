@@ -1,21 +1,3 @@
-h3
-  = image_tag @user.image.thumb50.url
-  | フォロー
+= render 'shared/user_header', title: "フォロー"
 
-table.table.table-hover
-  thead
-    tr
-      th フォロー
-      th 投稿数
-      th いいね獲得数
-    - @users.each do |user|
-      tbody
-        tr
-          td
-            = link_to user do 
-              = image_tag user.image.thumb50.url
-              = user.name
-          td
-            = user.posts.count
-          td
-            = user.likes.count
+= render 'shared/user_table', title: "フォロー"

@@ -2,30 +2,31 @@ h3 統計情報
 
 .container
   .row.row-eq-height
-    .col-md-4
-      div.card.card-chart.
+    .col-md-6.tex-center
+      div.card.card-chart
         div.card-card-header
         | ジャンル別チャート
         div.card-body
           = pie_chart Post.group(:genre).count
+    .col-md-6.tex-center
       div.card.card-chart
         div.card-card-header
         | 年齢別チャート
         div.card-body
           = bar_chart User.group(:sex).count
-        
-    .col-md-8
+  .row.row-eq-height
+    .col-md-6.tex-center
       div.card.card-chart.good-ranking
         div.card-card-header
         | いいね獲得数ランキング
         - @all_ranks.each.with_index(1) do |post, i|
-          div
+          h3
           | 第#{i}位：
           = post.likes_count
           | 件
-          div.card-body
-            .col-md-4
-              iframe.aaa allow=("accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture") allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/#{post.youtube_url.last(11)}" 
+          div.card-body.embed-responsive.embed-responsive-16by9
+            iframe src="https://www.youtube.com/embed/#{post.youtube_url.last(11)}"
+    .col-md-6.tex-center
       div.card.card-chart.age-chart
         div.card-card-header
         | 年齢別ユーザ数

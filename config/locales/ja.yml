@@ -5,8 +5,10 @@ ja:
       post: 投稿
     attributes:
       user:
-        image: プロフィール画像
+        image: 画像
         name: 名前
+        sex: 性別
+        age: 年代
         email: Eメール
         password: パスワード
         password_confirmation: パスワード確認

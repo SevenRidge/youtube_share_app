@@ -1,13 +1,15 @@
 .row.align-items-center.justify-content-center
   .toppage-eyecatch
     .eyecatch-phrase
-      h3 好きなYouTubeに出会う場所
+      h4 ジャンル別YouTube発掘サイト
     .eyecatch-guestloginbutton
       div = link_to "ゲストログイン", tops_guest_sign_in_path, method: :post, class: "btn btn-success"
     .eyecatch-postbutton
       - if current_user
         div = link_to "投稿", new_post_path, class: "btn btn-primary"
-
+    .eyecatch-postbutton
+      - if current_user
+        div = link_to "使用方法", howtouse_path, class: "btn btn-secondary"
 .row
   - @genres_list.each do |one_genre|
     .col-6.col-sm-6.col-md-6.col-lg-4.text-center

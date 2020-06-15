@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'howtouse/index'
   # root
   root to: 'tops#index'
 
@@ -17,6 +18,9 @@ Rails.application.routes.draw do
 
   # ゲストログイン用
   post '/tops/guest_sign_in', to: 'sessions#new_guest'
+
+  # howtouse用
+  get '/howtouse', to: 'howtouse#index'
 
   resources :posts
   resources :users do

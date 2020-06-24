@@ -1,24 +1,51 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Tube
 
-Things you may want to cover:
+This Application provides you a place to find your favorite movies on YouTube.
 
-* Ruby version
+このアプリケーションは、あなたにお気に入りのYouTube動画を見つけるための場所を提供します。
 
-* System dependencies
+# DEMO
+- If you don't register as a member, you will be able to:
+    - browse posts
 
-* Configuration
+- If you register as a member, you will be able to:
+    - browse posts
+    - post movies
+    - edit or delete posts
+    - follow other users
+    - press the like button on posts
+    - browse statistics
 
-* Database creation
+# Features
 
-* Database initialization
+Tube have 3 features.
 
-* How to run the test suite
+* You can search YouTube videos by genre.
+* You can build mutual connection between users through videos.
+* You can use "Tube" as a reference when you become a creator by knowing the trends of YouTube genres and the age groups of users.
 
-* Services (job queues, cache servers, search engines, etc.)
+* YouTube動画をジャンル別に探すことができます。
+* 動画を通じたユーザー同士の相互的な繋がりを構築できます。
+* YouTubeのジャンル別の傾向や、利用者の年齢層をユーザーが知ることで、あなた自身がクリエイターになる際の参考にすることができます。
 
-* Deployment instructions
+# Requirement
 
-* ...
+
+
+# Installation
+
+Requirementで列挙したライブラリなどのインストール方法を説明する
+
+```bash
+pip install huga_package
+```
+
+# Usage
+
+```bash
+git clone https://github.com/hoge/~
+cd examples
+python demo.py
+```
+

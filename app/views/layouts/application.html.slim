@@ -11,8 +11,38 @@ html
     meta content="width=device-width, initial-scale=1" name="viewport" /
   body
     .header
-      = render "layouts/header"
-    .container
-      - flash.each do |message_type, message|
-        div class="alert alert-#{message_type}" = message
-      = yield
+      nav.navbar.navbar-expand-sm.navbar-light
+        = link_to root_path
+          #logo = image_tag "App-Logo.png", size: "102x38"
+        button.navbar-toggler aria-controls="navbar-id" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbar-id" data-toggle="collapse" type="button" 
+          span.navbar-toggler-icon
+        #navbar-id.collapse.navbar-collapse.justify-content-end
+          ul.navbar-nav
+            - if current_user
+              li.nav-item
+                a.nav-link href="/posts/new" 投稿する
+              li.nav-item
+                a.nav-link href="/posts?post_genre=すべて" 投稿を見る
+              li.nav-item
+                a.nav-link href="/users" 全ユーザー
+              li.nav-item
+                a.nav-link href="/statistics" 統計情報
+              li.dropdown
+                a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" 
+                  = image_tag current_user.image.thumb50.url, size: "35x35"
+                  = current_user.name
+                ul.dropdown-menu.pull-right
+                  li = link_to "マイページ", current_user, class: 'nav-link'
+                  li = link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link', data: { confirm: 'ログアウトしますか？' }
+            - else
+              li.nav-item
+                a.nav-link href="/login" ログイン
+              li.nav-item
+                a.nav-link href="/users/new" 会員登録
+    .wrapper
+      .container
+        - flash.each do |message_type, message|
+          div class="alert alert-#{message_type}" = message
+        = yield
+    .footer
+      .text-center.text-muted ©Tube 2020

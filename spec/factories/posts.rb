@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :post do
-    comment {"This is nice video"}
-    youtube_url {"https://www.youtube.com/watch?v=wAm3Y5RAwns"}
+    comment {"this is Factory post"}
+    youtube_url {"https://www.youtube.com/watch?v=0AlmxAitmgU"}
     genre {"音楽"}
+    user
   end
 end

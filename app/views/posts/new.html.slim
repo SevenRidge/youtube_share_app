@@ -1,12 +1,5 @@
 .row.justify-content-center
   .col-offset-3.col-md-12
-    - if @post.errors.present?
-      .alert.alert-danger
-        div #{pluralize(@post.errors.count,"個のエラー")}があります
-      ul#error_explanation
-      - @post.errors.full_messages.each do |message|
-        li = message
-
     .panel.panel-default
       .panel-heading
         | 投稿
@@ -16,11 +9,16 @@
           .form-group
             = f.label :genre
             = f.select :genre,[["音楽"], ["アニメ"], ["ゲーム"], ["お笑い"], ["キッズ"], ["いやし"],["美容"],["料理"],["勉強"],["趣味"], ["ビジネス"], ["ニュース"]], {include_blank: ""}, class: "form-control"
+          - if @post.errors.include?(:genre)
+            p style=("color: red;") = @post.errors.full_messages_for(:genre).first
           .form-group
             = f.label :youtube_url
             = f.text_field :youtube_url, class: 'form-control', id: 'post_youtube_url'
-          
+          - if @post.errors.include?(:youtube_url)
+            p style=("color: red;") = @post.errors.full_messages_for(:youtube_url).first
           .form-group
             = f.label :comment
             = f.text_field :comment, class: 'form-control', id: 'post_comment'
+          - if @post.errors.include?(:comment)
+            p style=("color: red;") = @post.errors.full_messages_for(:comment).first
           = f.submit nil, class: 'btn btn-primary'

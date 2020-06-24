@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   
   validates :comment, presence: true, length: { maximum: 30 }
     VALID_YOUTUBE_URL = /\Ahttps:\/\/(www\.youtube\.com\/watch\?v=|m\.youtube\.com\/watch\?v=|youtu\.be\/)[-\w]{11}\z/
-  validates :youtube_url, format: { with: VALID_YOUTUBE_URL, message: "は公式サイトから取得してください"}
+  validates :youtube_url, format: { with: VALID_YOUTUBE_URL, message: "が誤っています"}
   validates :genre, presence: { message: "を指定してください" }
 
   def good?(user)

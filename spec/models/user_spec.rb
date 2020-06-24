@@ -22,6 +22,26 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
 
+      it "性別が空欄かどうか" do
+        @user.sex = ""
+        @user.valid?
+        expect(@user.errors[:sex]).to include("を入力してください")
+
+        @user.sex = "男"
+        @user.valid?
+        expect(@user).to be_valid
+      end
+
+      it "年代が空欄かどうか" do
+        @user.age = ""
+        @user.valid?
+        expect(@user.errors[:age]).to include("を入力してください")
+
+        @user.age = "20~29才"
+        @user.valid?
+        expect(@user).to be_valid
+      end
+
       it "Eメールが空欄かどうか" do
         @user.email = ""
         @user.valid?
@@ -55,12 +75,12 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
 
-      it "名前の文字数が15文字より大きい" do
-        user = FactoryBot.build(:user, name: "a" * 16)
+      it "名前の文字数が10文字より大きい" do
+        user = FactoryBot.build(:user, name: "a" * 11)
         user.valid?
-        expect(user.errors[:name]).to include("は15文字以内で入力してください")
+        expect(user.errors[:name]).to include("は10文字以内で入力してください")
 
-        @user.name = "a" * 15
+        @user.name = "a" * 10
         @user.valid?
         expect(@user).to be_valid
       end
@@ -103,13 +123,13 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
 
-      it "パスワードの文字数が20文字より大きい" do
-        user = FactoryBot.build(:user, password: "a" * 21)
+      it "パスワードの文字数が64文字より大きい" do
+        user = FactoryBot.build(:user, password: "a" * 65)
         user.valid?
-        expect(user.errors[:password]).to include("は20文字以内で入力してください")
+        expect(user.errors[:password]).to include("は64文字以内で入力してください")
 
-        @user.password = "12345678901234567890"
-        @user.password_confirmation = "12345678901234567890"
+        @user.password = "a * 64"
+        @user.password_confirmation = "a * 64"
         @user.valid?
         expect(@user).to be_valid
       end

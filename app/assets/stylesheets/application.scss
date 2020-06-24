@@ -11,6 +11,23 @@ body {
   background-color: #FFFFF0;
 }
 
+// navbarドロップダウンメニュー
+.dropdown-menu.pull-right {
+  right: 0;
+  left: auto;
+}
+
+.wrapper{
+  min-height: 100vh;
+  position: relative;
+}
+
+// フッター
+footer{
+  position: absolute;
+  bottom: 0;
+}
+
 /*
 トップページ
 */

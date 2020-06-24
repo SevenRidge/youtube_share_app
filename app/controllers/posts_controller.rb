@@ -29,7 +29,7 @@ class PostsController < ApplicationController
 
   def update
     @post.update!(post_params)
-    redirect_to post.user, notice: "編集できました"
+    redirect_to @post.user, notice: "編集できました"
   end
 
   def destroy

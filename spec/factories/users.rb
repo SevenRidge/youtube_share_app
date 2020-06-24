@@ -1,8 +1,10 @@
 FactoryBot.define do
   factory :user do
     image { Rack::Test::UploadedFile.new(File.join(Rails.root, "spec/fixtures/test.jpg")) }
-    name { "テストユーザー" }
-    sequence(:email) { |n| "testuser#{n}@example.com" }
+    sequence(:name) { |n| "User#{n}"}
+    sex { "男性" }
+    age { "10~19才" }
+    sequence(:email) { |n| "User#{n}@example.com" }
     password {"password"}
     password_confirmation {"password"}
   end

@@ -12,5 +12,5 @@
         div = link_to "使用方法", howtouse_path, class: "btn btn-secondary"
 .row
   - @genres_list.each do |one_genre|
-    .col-6.col-sm-6.col-md-6.col-lg-4.text-center
+    .col-6.col-sm-6.col-md-4.col-lg-3.text-center
       = link_to one_genre, posts_path(post_genre: one_genre), class: "btn btn-primary btn-lg toppage-genrebuttons"

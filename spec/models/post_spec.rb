@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   describe "# new" do
     before do
-      @post = FactoryBot.build(:post)
+      @user = FactoryBot.build(:user)
+      @post = FactoryBot.build(:post, user: @user)
     end
 
     it "ひとことが空欄" do
@@ -19,9 +20,9 @@ RSpec.describe Post, type: :model do
     it "YouTubeのURLが空欄" do
       @post.youtube_url = ""
       @post.valid?
-      expect(@post.errors[:youtube_url]).to include("は公式サイトから取得してください")
+      expect(@post.errors[:youtube_url]).to include("が誤っています")
 
-      @post.youtube_url = "https://www.youtube.com/watch?v=wAm3Y5RAwns"
+      @post.youtube_url = "https://www.youtube.com/watch?v=fTjTVekQGdA"
       @post.valid?
       expect(@post).to be_valid
     end
@@ -46,12 +47,18 @@ RSpec.describe Post, type: :model do
       expect(@post).to be_valid
     end
 
-    it "YouTubeのURLの先頭がhttps://www.youtube.com/watch?v=ではない" do
+    it "YouTubeのURLがPCのブラウザから取得" do
       @post.youtube_url = "https://www.example.com/index/123456789012"
       @post.valid?
-      expect(@post.errors[:youtube_url]).to include("は公式サイトから取得してください")
+      expect(@post.errors[:youtube_url]).to include("が誤っています")
 
-      @post.youtube_url = "https://www.youtube.com/watch?v=wAm3Y5RAwns"
+      @post.youtube_url = "https://www.youtube.com/watch?v=q9PkFk2CHJQ"
+      @post.valid?
+      expect(@post).to be_valid
+    end
+
+    it "YouTubeのURLがiPhoneアプリから取得" do
+      @post.youtube_url = "https://youtu.be/awJkJpkGJYQ"
       @post.valid?
       expect(@post).to be_valid
     end

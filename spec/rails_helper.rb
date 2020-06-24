@@ -71,4 +71,11 @@ RSpec.configure do |config|
   # テスト内でメソッド使用時にFactoryBotという記述を省略するため 2020.05.24追加
   config.include FactoryBot::Syntax::Methods
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
+
+  # no-sandbox対応 2020.06.19
+  config.before(:each) do |example|
+    if example.metadata[:type] == :system
+      driven_by :selenium, using: :headless_chrome, screen_size: [1280, 800], options: { args: ["headless", "disable-gpu", "no-sandbox", "disable-dev-shm-usage"] }
+    end
+  end
 end

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :followings, :followers]
+  before_action :find_user, only: [:show, :followings, :followers, :destroy]
 
   def index
     @users = User.all
@@ -13,15 +13,22 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "会員登録が完了しました\r投稿ができるようになります"
+      flash[:success] = "会員登録が完了しました"
       redirect_to @user
     else
       render :new
+      @user = User.new(user_params)
     end
   end
 
   def show
     @posts = @user.posts.order(created_at: :desc)
+  end
+
+  def destroy
+    @user.destroy
+    flash[:success] = "退会に成功しました"
+    redirect_to root_path
   end
 
   def followings
@@ -40,6 +47,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:image, :name, :sex, :age, :email, :password, :password_confirmation)
+      params.require(:user).permit(:image, :name, :sex, :age, :email, :password, :password_confirmation, :image_cache)
     end
 end

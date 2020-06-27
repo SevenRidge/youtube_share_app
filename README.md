@@ -23,8 +23,8 @@ https://www.tube-movies.com
 - 統計グラフ(chartkick)
 - いいね機能(javascript, counter_culture)
 - インフラ(Docker, Docker-compose)
-- PaaS(EC2)
-- SSL通信(ELB, ACM, Route53)
+- PaaS(AWS EC2)
+- SSL通信(AWS ELB, ACM, Route53)
 
 # 特徴
 * YouTube動画をジャンル形式に分類した点

@@ -58,6 +58,10 @@ gem 'font-awesome-sass', '~> 5.8.1'
 # チャート 2020.06.13
 gem "chartkick"
 
+# URLコピー
+gem 'clipboard-rails'
+gem 'zeroclipboard-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

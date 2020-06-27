@@ -20,3 +20,7 @@
 //= require_tree .
 //= require chartkick
 //= require Chart.bundle
+
+$(document).ready(function() {
+  var clip = new ZeroClipboard($("#d_clip_button"))
+});
